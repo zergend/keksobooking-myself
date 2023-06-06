@@ -1,12 +1,22 @@
 function randomIntFromInterval(min, max) {
-  return Math.round(Math.random() * (max - min + 1) + min);
-}
-
-function randomFromInterval(min, max, n) {
   if (min > max) {
     let newMax = min;
     min = max;
     max = newMax;
   }
-  return Math.round(Math.random() * (max - min + 1) + min, n);
+
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randomFloatFromInterval(min, max, n = 2) {
+  if (min > max) {
+    let newMax = min;
+    min = max;
+    max = newMax;
+  }
+
+  let randomFloat = Math.random() * (max - min) + min;
+  return randomFloat.toFixed(n);
 }
